@@ -4,8 +4,8 @@ canvas.width = window.innerWidth - 50;
 
 const ctx = canvas.getContext('2d');
 const origin = {x: canvas.width / 2, y: canvas.height / 2};
-const L1length = 200;
-const L2length = 150;
+const L1length = 300;
+const L2length = 200;
 
 function drawLine(start, end, width, color) {
     ctx.strokeStyle = color;
@@ -32,7 +32,14 @@ document.addEventListener('mousemove', (mouse) => {
     let mouseY = mouse.clientY - origin.y;
     let d = Math.sqrt(Math.pow(mouseX, 2) + Math.pow(mouseY, 2));
 
-    if (L1length + L2length < d || Math.abs(L1length - L2length) > d) {
+    if (d > L1length + L2length) {
+        // Scale down the target to the maximum reachable distance
+        mouseX = mouseX * (L1length + L2length) / d;
+        mouseY = mouseY * (L1length + L2length) / d;
+        d = L1length + L2length;
+    }
+
+    if(Math.abs(L1length - L2length) > d){
         return;
     }
     
