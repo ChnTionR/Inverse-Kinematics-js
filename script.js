@@ -40,6 +40,8 @@ document.addEventListener('mousemove', (mouse) => {
     }
 
     if(Math.abs(L1length - L2length) > d){
+        mouseX = mouseX * Math.abs(L1length - L2length) / d;
+        mouseY = mouseY * Math.abs(L1length - L2length) / d;
         d = Math.abs(L1length - L2length);
     }
     
