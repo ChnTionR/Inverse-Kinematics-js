@@ -40,7 +40,7 @@ document.addEventListener('mousemove', (mouse) => {
     }
 
     if(Math.abs(L1length - L2length) > d){
-        return;
+        d = 0
     }
     
     drawBoard();
